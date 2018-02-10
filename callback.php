@@ -42,7 +42,7 @@ else{
 	} elseif (!$Opauth->validate(sha1(print_r($response['auth'], true)), $response['timestamp'], $response['signature'], $reason)) {
 		echo '<strong style="color: red;">Invalid auth response: </strong>'.$reason.".<br>\n";
 	} else {
-		echo '<strong style="color: green;">OK: </strong>Auth response is validated.'."<br>\n";
+		//echo '<strong style="color: green;">OK: </strong>Auth response is validated.'."<br>\n";
 
 		/**
 		 * It's all good. Go ahead with your application-specific authentication logic
