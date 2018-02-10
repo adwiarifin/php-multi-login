@@ -47,19 +47,6 @@ else{
 		/**
 		 * It's all good. Go ahead with your application-specific authentication logic
 		 */
-		switch ($response['auth']['provider']) {
-			case 'Google':
-				echo "Hello " . $response['auth']['info']['name'] . ' from Google World';
-				break;
-			case 'Twitter':
-				echo "Hello " . $response['auth']['info']['name'] . ' from Twitter World';
-				break;
-			case 'Facebook':
-				echo json_encode($response);
-				break;
-			default:
-				echo json_encode($response);
-				break;
-		}
+		echo "Hello " . $response['auth']['info']['name'] . ' from ' . $response['auth']['provider'] . ' World';
 	}
 }
