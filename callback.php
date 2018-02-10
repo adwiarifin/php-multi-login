@@ -55,7 +55,7 @@ else{
 				echo "Hello " . $response['auth']['info']['name'] . ' from Twitter World';
 				break;
 			case 'Facebook':
-				echo "Not yet implemented";
+				echo json_encode($response);
 				break;
 			default:
 				echo json_encode($response);
