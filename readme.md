@@ -39,6 +39,31 @@ PHP and [opauth](https://github.com/opauth/opauth) library.
 	);
 	```
 4.	Make new Opauth Object:
-	`$auth = new Opauth($config);`
-5.	Make callback
-	tbd
+	```php
+	$auth = new Opauth($config);
+	```
+5.	Make callback.php, get response variable, it can be session, post, or get. 
+	```php
+	$Opauth = new Opauth( $config, false );
+	$response = null;
+	switch($Opauth->env['callback_transport']) {
+		case 'session':
+			session_start();
+			$response = $_SESSION['opauth'];
+			unset($_SESSION['opauth']);
+			break;
+		case 'post':
+			$response = unserialize(base64_decode( $_POST['opauth'] ));
+			break;
+		case 'get':
+			$response = unserialize(base64_decode( $_GET['opauth'] ));
+			break;
+		default:
+			echo '<strong style="color: red;">Error: </strong>Unsupported callback_transport.'."<br>\n";
+			break;
+	}
+	```
+	and then process it:
+	```php
+	echo "Hello " . $response['auth']['info']['name'];
+	```
